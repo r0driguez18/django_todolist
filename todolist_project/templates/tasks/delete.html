@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2>Apagar tarefa</h2>
+<p>Tem a certeza que pretende apagar <strong>{{ task.title|escape }}</strong>?</p>
+<form method="post">{% csrf_token %}
+  <button type="submit">Confirmar</button>
+  <a href="/tasks/">Cancelar</a>
+</form>
+{% endblock %}

@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2>Nova tarefa</h2>
+<form method="post">{% csrf_token %}
+  <label>Título <input name="title" maxlength="200" required></label>
+  <label>Descrição <textarea name="description"></textarea></label>
+  <button type="submit">Guardar</button>
+</form>
+{% endblock %}

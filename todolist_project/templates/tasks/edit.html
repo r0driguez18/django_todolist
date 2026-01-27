@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2>Editar tarefa</h2>
+<form method="post">{% csrf_token %}
+  <label>Título <input name="title" value="{{ task.title }}" maxlength="200" required></label>
+  <label>Descrição <textarea name="description">{{ task.description }}</textarea></label>
+  <button type="submit">Guardar</button>
+</form>
+{% endblock %}

@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2>As minhas tarefas</h2>
+<p>
+  <a href="/tasks/create/">Nova tarefa</a>
+  | Filtrar: <a href="?">todas</a> | <a href="?status=pending">pendentes</a> | <a href="?status=done">concluídas</a>
+</p>
+<table>
+  <thead><tr><th>Título</th><th>Estado</th><th>Ações</th></tr></thead>
+  <tbody>
+  {% for t in tasks %}
+    <tr>
+      <td>{{ t.title|escape }}</td>
+      <td>{{ t.is_done|yesno:"✔,✖" }}</td>
+      <td>
+        <a href="/tasks/{{ t.id }}/toggle/">Alternar</a> |
+        <a href="/tasks/{{ t.id }}/edit/">Editar</a> |
+        <a href="/tasks/{{ t.id }}/delete/">Apagar</a>
+      </td>
+    </tr>
+  {% empty %}
+    <tr><td colspan="3">Sem tarefas.</td></tr>
+  {% endfor %}
+  </tbody>
+</table>
+{% endblock %}

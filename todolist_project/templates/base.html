@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="pt">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>ToDoList</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css">
+</head>
+<body>
+  <nav class="container">
+    <ul>
+      <li><strong>ToDoList</strong></li>
+    </ul>
+    <ul>
+      {% if request.user.is_authenticated %}
+        <li>Olá, {{ request.user.username }}</li>
+        <li><a href="/tasks/">Tarefas</a></li>
+        <li><a href="/accounts/logout/">Sair</a></li>
+      {% else %}
+        <li><a href="/accounts/login/">Entrar</a></li>
+        <li><a href="/accounts/register/">Registar</a></li>
+      {% endif %}
+    </ul>
+  </nav>
+  <main class="container">
+    {% for message in messages %}
+      <article class="secondary">{{ message }}</article>
+    {% endfor %}
+    {% block content %}{% endblock %}
+  </main>
+</body>
+</html>
