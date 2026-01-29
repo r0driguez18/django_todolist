@@ -54,8 +54,6 @@ A Django ToDoList é uma aplicação web para gestão de tarefas pessoais, ofere
 
 ## 5. Quadro Explicativo dos Casos de Uso
 
-## 📌 Casos de Uso – Tabela Resumida
-
 | Caso de Uso        | Atores              | Pré‑condições         | Fluxo Principal                                                                 | Fluxos Alternativos                | Pós‑condições                      |
 |--------------------|---------------------|------------------------|----------------------------------------------------------------------------------|------------------------------------|-------------------------------------|
 | **UC0 – Registar Utilizador** | Utilizador          | Aplicação disponível | Preencher formulário → Validar dados → Guardar utilizador                       | Utilizador existente: exibe erro   | Utilizador criado e autenticado     |
