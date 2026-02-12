@@ -55,8 +55,8 @@ jobs:
             tags: |
               r0driguez18/django_todolist:latest
               r0driguez18/django_todolist:${{ github.event.release.tag_name }}
-            cache-from: type=registry,ref=zeguimoko/django_todolist:buildcache
-            cache-to: type=registry,ref=zeguimoko/django_todolist:buildcache,mode=max
+            cache-from: type=registry,ref=r0driguez18/django_todolist:buildcache
+            cache-to: type=registry,ref=r0driguez18/django_todolist:buildcache,mode=max
             
 
  
