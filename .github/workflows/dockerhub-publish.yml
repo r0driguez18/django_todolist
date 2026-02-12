@@ -53,8 +53,8 @@ jobs:
             push: true
             platforms: linux/amd64
             tags: |
-              r0driguez18/django_todolist:latest
-              r0driguez18/django_todolist:${{ github.event.release.tag_name }}
+              ${{ secrets.DOCKERHUB_USERNAME }}/django_todolist:latest
+              ${{ secrets.DOCKERHUB_TOKEN }}/django_todolist:${{ github.event.release.tag_name }}
             cache-from: type=registry,ref=zeguimoko/django_todolist:buildcache
             cache-to: type=registry,ref=zeguimoko/django_todolist:buildcache,mode=max
             
