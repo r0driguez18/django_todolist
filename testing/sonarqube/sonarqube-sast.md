@@ -22,8 +22,8 @@ Guia rápido para levantar o **SonarQube + Postgres via Docker Compose** (arquiv
 
 ## 1️⃣ O que é SonarQube e SAST
 
-* **SonarQube**: plataforma para inspeção contínua de qualidade e segurança de código (bugs, code smells, vulnerabilidades, hotspots de segurança).
 * **SAST** (Static Application Security Testing): análise de código-fonte sem executar a aplicação, detectando vulnerabilidades cedo no ciclo de desenvolvimento.
+* **SonarQube**: plataforma para inspeção contínua de qualidade e segurança de código (bugs, code smells, vulnerabilidades, hotspots de segurança).
 
 Objetivo deste guia: levantar o SonarQube localmente com Postgres e executar uma análise SAST em projeto `django-todolist` usando o `sonar-scanner` em contêiner.
 
@@ -89,11 +89,11 @@ Deve aparecer os containers `bca-postgres18` e `bca-sonarqube`.
    ```bash
    docker compose ps
    ```
-   Deve aparecer logs do container: `database system is ready to accept connections`
+   **PostgreSQL**: Deve aparecer logs do container --> `database system is ready to accept connections`
    ```bash
    docker logs --follow bca-postgres18
    ```
-   Deve aparecer logs do container: `SonarQube is operational`.
+   **SonarQube**: Deve aparecer logs do container --> `SonarQube is operational`.
    ```bash
    docker logs --follow bca-sonarqube
    ```

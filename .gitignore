@@ -25,3 +25,5 @@ Thumbs.db
 
 !**/.env.example
 .sonar
+
+venv

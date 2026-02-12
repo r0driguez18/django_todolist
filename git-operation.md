@@ -130,6 +130,9 @@ Mostra:
 ---
 
 ## 7️⃣ Adicionar ficheiros (stage)
+
+> Antes, criar o ficheiro na raiz do projeto: `your_name.txt`
+
 Adicionar ficheiro específico:
 ```bash
 git add your_name.txt

@@ -7,26 +7,37 @@ Guia prático para executar análise SAST do SonarQube em pipelines GitHub Actio
 
 ## Índice
 1. Visão Geral
-2. Pré‑requisitos
-3. Configurar GitHub dentro do SonarQube
-4. Importar projeto de GitHub para SonarQube
-5. Conferir execução no GitHub Actions
-6. Referências
+2. O que é GitHub Actions?
+3. Pré‑requisitos
+4. Configurar GitHub dentro do SonarQube
+5. Importar projeto de GitHub para SonarQube
+6. Conferir execução no GitHub Actions
+7. Referências
 
 ---
 
 ## 1. Visão Geral
 - O SonarScanner é executado em cada push/PR.
 - Os resultados são enviados para o SonarQube Server self‑hosted (ou SonarCloud).
+- A análise corre num workflow do GitHub Actions hospedado no próprio repositório.
 ---
 
-## 2. Pré‑requisitos
+## 2. O que é GitHub Actions?
+- Plataforma de automação nativa do GitHub que permite orquestrar pipelines (CI/CD) através de ficheiros YAML guardados no repositório em `.github/workflows/`.
+- Um workflow é composto por _triggers_ (ex.: `push`, `pull_request`, `schedule`), _jobs_ e _steps_; os _jobs_ correm em _runners_ hospedados pelo GitHub ou self‑hosted.
+- Permite usar _actions_ prontas da marketplace ou código próprio; as credenciais e _tokens_ ficam em `secrets`.
+- Para SAST com SonarQube, usamos um workflow que executa o scanner e envia resultados para o servidor configurado.
+
+---
+
+## 3. Pré‑requisitos
 - Projeto já criado no SonarQube com `Project Key`.
 - Token de projeto (gerado em My Account → Security).
+- Permissão para criar _Secrets_ no repositório GitHub (ex.: `SONAR_HOST_URL` e `SONAR_TOKEN`).
 
 ---
 
-## 3. Configurar GitHub dentro do SonarQube
+## 4. Configurar GitHub dentro do SonarQube
 > Necessário para PR Decoration e para ligar projetos a repositórios.
 
 1. Entrar como admin no SonarQube e seguir os seguintes passos:
@@ -61,7 +72,7 @@ Guia prático para executar análise SAST do SonarQube em pipelines GitHub Actio
       - Clicar em **Only select repositories** e ecolha o seu repositorio, que pretende analisar. Por Fim, clicar em **Install**.
 
 ---
-## 4. Importar projeto de GitHub para SonarQube
+## 5. Importar projeto de GitHub para SonarQube
 1. Menu **Projects**, clicar em **Create Project** e selecionar **From github**.
 2. Autorizar o SonarQube a acessar o GitHub, clicando em `Authorize sonarqube-bca`.
 3. Escolher a conta GitHub e de seguida o repositório que pretende importar.
@@ -99,13 +110,13 @@ jobs:
           SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
 ```
 
-## 5. Conferir a execução do pipeline em Github Actions do repositorio. 
+## 6. Conferir a execução do pipeline em Github Actions do repositorio. 
 1. Clicar em **Actions** e ver os logs da execução.
 2. Voltar para UI do SonarQube e ver os resultados.
 
 ---
 
-## 6. Referências
+## 7. Referências
 - SonarQube Docs: https://docs.sonarsource.com/sonarqube/latest/
 - GitHub Action oficial: https://github.com/SonarSource/sonarcloud-github-action
 - Scanner CLI: https://docs.sonarsource.com/sonarqube/latest/analysis/scan/sonarscanner-for-cli/
